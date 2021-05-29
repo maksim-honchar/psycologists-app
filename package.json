@@ -1,7 +1,7 @@
 {
-  "name": "sidemenu_app",
+  "name": "psychologists-app",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@capacitor/app": "1.0.0",
     "@capacitor/core": "3.0.0",
