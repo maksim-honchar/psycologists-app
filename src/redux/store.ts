@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import postsReducer from './postsSlice'
+import specialistsReducer from './specialistsSlice'
 
 export const store = configureStore({
     reducer: {
-        posts: postsReducer,
+        specialists: specialistsReducer,
     }
 })
 

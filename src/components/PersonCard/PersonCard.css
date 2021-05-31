@@ -1,0 +1,15 @@
+.icon-wrapper {
+  display: flex;
+}
+
+.icon {
+  color: grey;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.icon-active {
+  color: #ff6d00;
+  cursor: pointer;
+  font-size: 28px;
+}

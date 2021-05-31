@@ -33,32 +33,32 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: "Add a specialist",
+    title: "Добавить специалиста",
     url: "/",
     iosIcon: personAddOutline,
     mdIcon: personAddSharp,
   },
   {
-    title: "All specialists",
+    title: "Все специалисты",
     url: "/all-specialists",
     iosIcon: peopleOutline,
     mdIcon: peopleSharp,
   },
   {
-    title: "Favorites",
-    url: "/page/Favorites",
+    title: "Избранные",
+    url: "/favorites",
     iosIcon: heartOutline,
     mdIcon: heartSharp,
   },
   {
-    title: "Archived",
-    url: "/page/Archived",
+    title: "Черный список",
+    url: "/black-list",
     iosIcon: archiveOutline,
     mdIcon: archiveSharp,
   },
   {
-    title: "Trash",
-    url: "/page/Trash",
+    title: "Аналитика",
+    url: "/analytics",
     iosIcon: trashOutline,
     mdIcon: trashSharp,
   },
@@ -71,7 +71,7 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonListHeader>
-          <h1>Application</h1>
+          <h1>Приложение</h1>
         </IonListHeader>
         <IonNote>maksim.honchar@gmail.com</IonNote>
         {appPages.map((appPage, index) => {
