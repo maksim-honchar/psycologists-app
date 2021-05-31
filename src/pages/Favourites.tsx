@@ -20,13 +20,15 @@ import {
 } from "../redux/specialistsSlice";
 import TypeList from "../components/TypeList";
 import PersonCard from "../components/PersonCard/PersonCard";
-import "./AllSpecialists.css";
+import "./pages.css";
+import Spiner from "../components/Spiner";
 
 const Favourites: FC = () => {
   const dispatch = useDispatch();
   const { personsStatus, persons } = useSetHooks();
   const [showType, setShowType] = useState<boolean | string>(true);
   const showTypeString = typeof showType === "string";
+  const personsLength = persons.length > 0;
 
   // Set display mode by specialist type
   const setType = (type: string | boolean) => setShowType(type);
@@ -57,6 +59,19 @@ const Favourites: FC = () => {
     }
   }, [dispatch, personsStatus]);
 
+  const content = (
+    <>
+      <div className="filtered-btn">
+        <TypeList
+          setType={setType}
+          showTypeString={showTypeString}
+          showType={showType}
+        />
+      </div>
+      <IonList>{listPersons}</IonList>
+    </>
+  );
+
   return (
     <IonPage>
       <IonHeader>
@@ -67,16 +82,7 @@ const Favourites: FC = () => {
           <IonTitle>Избранные</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <div className="popover">
-          <TypeList
-            setType={setType}
-            showTypeString={showTypeString}
-            showType={showType}
-          />
-        </div>
-        <IonList>{listPersons}</IonList>
-      </IonContent>
+      <IonContent>{personsLength ? content : <Spiner />}</IonContent>
     </IonPage>
   );
 };

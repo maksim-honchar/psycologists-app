@@ -2,7 +2,7 @@ import { IonApp, IonRouterOutlet, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { Route } from "react-router-dom";
 import Menu from "./components/Menu";
-import AddSpecialist from "./pages/AddSpecialist";
+import AddSpecialist from "./pages/AddSpecialist/AddSpecialist";
 import AllSpecialists from "./pages/AllSpecialists";
 import Favourites from "./pages/Favourites";
 import BlackList from "./pages/BlackList";

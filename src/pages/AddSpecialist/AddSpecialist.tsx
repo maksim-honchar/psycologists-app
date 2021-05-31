@@ -19,9 +19,8 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import { FC, useState, SyntheticEvent } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { addNewSpecialist } from "../redux/specialistsSlice";
-import { AppDispatch } from "../redux/store";
-
+import { addNewSpecialist } from "../../redux/specialistsSlice";
+import { AppDispatch } from "../../redux/store";
 import "./AddSpecialist.css";
 
 const AddSpecialist: FC = () => {

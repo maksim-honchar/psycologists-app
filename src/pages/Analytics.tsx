@@ -11,13 +11,13 @@ import { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSetHooks } from "../hooks/hooks";
 import { fetchSpecialists } from "../redux/specialistsSlice";
-
-import "./AllSpecialists.css";
 import AnalyticsContnet from "../components/AnalyticsContent/AnalyticsContent";
+import Spiner from "../components/Spiner";
 
 const Analytics: FC = () => {
   const dispatch = useDispatch();
   const { personsStatus, persons } = useSetHooks();
+  const personsLength = persons.length > 0;
 
   // Amount all persons
   const totalAmount = persons.length;
@@ -84,6 +84,23 @@ const Analytics: FC = () => {
     }
   }, [dispatch, personsStatus]);
 
+  const Content = (
+    <AnalyticsContnet
+      totalAmount={totalAmount}
+      amountPsychologist={amountPsychologist}
+      amountPsychotherapist={amountPsychotherapist}
+      amountPsychiatrist={amountPsychiatrist}
+      amountFavourites={amountFavourites}
+      favourPsychologist={favourPsychologist}
+      favourPsychotherapist={favourPsychotherapist}
+      favourPsychiatrist={favourPsychiatrist}
+      disFavourites={disFavourites}
+      disFavourPsychologist={disFavourPsychologist}
+      disFavourPsychotherapist={disFavourPsychotherapist}
+      disFavourPsychiatrist={disFavourPsychiatrist}
+    />
+  );
+
   return (
     <IonPage>
       <IonHeader>
@@ -94,22 +111,7 @@ const Analytics: FC = () => {
           <IonTitle>Аналитика</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <AnalyticsContnet
-          totalAmount={totalAmount}
-          amountPsychologist={amountPsychologist}
-          amountPsychotherapist={amountPsychotherapist}
-          amountPsychiatrist={amountPsychiatrist}
-          amountFavourites={amountFavourites}
-          favourPsychologist={favourPsychologist}
-          favourPsychotherapist={favourPsychotherapist}
-          favourPsychiatrist={favourPsychiatrist}
-          disFavourites={disFavourites}
-          disFavourPsychologist={disFavourPsychologist}
-          disFavourPsychotherapist={disFavourPsychotherapist}
-          disFavourPsychiatrist={disFavourPsychiatrist}
-        />
-      </IonContent>
+      <IonContent>{personsLength ? Content : <Spiner />}</IonContent>
     </IonPage>
   );
 };

@@ -11,7 +11,6 @@ import {
 import { FC, useEffect, useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-
 import { useSetHooks } from "../hooks/hooks";
 import {
   addToDisfavourite,
@@ -19,15 +18,16 @@ import {
   fetchSpecialists,
 } from "../redux/specialistsSlice";
 import TypeList from "../components/TypeList";
+import Spiner from "../components/Spiner";
 import PersonCard from "../components/PersonCard/PersonCard";
-
-import "./AllSpecialists.css";
+import "./pages.css";
 
 const AllSpecialists: FC = () => {
   const dispatch = useDispatch();
   const { personsStatus, persons } = useSetHooks();
   const [showType, setShowType] = useState<boolean | string>(true);
   const showTypeString = typeof showType === "string";
+  const personsLength = persons.length > 0;
 
   // Set display mode by specialist type
   const setType = (type: string | boolean) => setShowType(type);
@@ -59,6 +59,19 @@ const AllSpecialists: FC = () => {
     }
   }, [dispatch, personsStatus]);
 
+  const content = (
+    <>
+      <div className="filtered-btn">
+        <TypeList
+          setType={setType}
+          showTypeString={showTypeString}
+          showType={showType}
+        />
+      </div>
+      <IonList>{listPersons}</IonList>
+    </>
+  );
+
   return (
     <IonPage>
       <IonHeader>
@@ -69,16 +82,7 @@ const AllSpecialists: FC = () => {
           <IonTitle>Все специалисты</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <div className="popover">
-          <TypeList
-            setType={setType}
-            showTypeString={showTypeString}
-            showType={showType}
-          />
-        </div>
-        <IonList>{listPersons}</IonList>
-      </IonContent>
+      <IonContent>{personsLength ? content : <Spiner />}</IonContent>
     </IonPage>
   );
 };
