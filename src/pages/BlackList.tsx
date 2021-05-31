@@ -64,7 +64,7 @@ const BlackList: FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Все специалисты</IonTitle>
+          <IonTitle>Черный список</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>

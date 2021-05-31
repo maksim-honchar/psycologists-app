@@ -64,7 +64,7 @@ const Favourites: FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Все специалисты</IonTitle>
+          <IonTitle>Избранные</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>

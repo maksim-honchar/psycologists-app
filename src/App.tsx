@@ -25,6 +25,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import Analytics from "./pages/Analytics";
 
 const App: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ const App: React.FC = () => {
             <Route exact path="/all-specialists" component={AllSpecialists} />
             <Route exact path="/favourites" component={Favourites} />
             <Route exact path="/black-list" component={BlackList} />
+            <Route exact path="/analytics" component={Analytics} />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>

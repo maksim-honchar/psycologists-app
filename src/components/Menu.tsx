@@ -11,8 +11,8 @@ import {
 
 import { useLocation } from "react-router-dom";
 import {
-  archiveOutline,
-  archiveSharp,
+  analyticsOutline,
+  analyticsSharp,
   heartDislikeOutline,
   heartDislikeSharp,
   heartOutline,
@@ -21,8 +21,6 @@ import {
   peopleSharp,
   personAddOutline,
   personAddSharp,
-  trashOutline,
-  trashSharp,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -61,8 +59,8 @@ const appPages: AppPage[] = [
   {
     title: "Аналитика",
     url: "/analytics",
-    iosIcon: trashOutline,
-    mdIcon: trashSharp,
+    iosIcon: analyticsOutline,
+    mdIcon: analyticsSharp,
   },
 ];
 
