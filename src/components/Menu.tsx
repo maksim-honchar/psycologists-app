@@ -13,6 +13,8 @@ import { useLocation } from "react-router-dom";
 import {
   archiveOutline,
   archiveSharp,
+  heartDislikeOutline,
+  heartDislikeSharp,
   heartOutline,
   heartSharp,
   peopleOutline,
@@ -46,15 +48,15 @@ const appPages: AppPage[] = [
   },
   {
     title: "Избранные",
-    url: "/favorites",
+    url: "/favourites",
     iosIcon: heartOutline,
     mdIcon: heartSharp,
   },
   {
     title: "Черный список",
     url: "/black-list",
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp,
+    iosIcon: heartDislikeOutline,
+    mdIcon: heartDislikeSharp,
   },
   {
     title: "Аналитика",

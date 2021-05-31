@@ -4,6 +4,8 @@ import { Route } from "react-router-dom";
 import Menu from "./components/Menu";
 import AddSpecialist from "./pages/AddSpecialist";
 import AllSpecialists from "./pages/AllSpecialists";
+import Favourites from "./pages/Favourites";
+import BlackList from "./pages/BlackList";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -33,6 +35,8 @@ const App: React.FC = () => {
           <IonRouterOutlet id="main">
             <Route exact path="/" component={AddSpecialist} />
             <Route exact path="/all-specialists" component={AllSpecialists} />
+            <Route exact path="/favourites" component={Favourites} />
+            <Route exact path="/black-list" component={BlackList} />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
