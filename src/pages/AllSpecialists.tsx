@@ -38,9 +38,11 @@ const AllSpecialists: FC = () => {
 
   // maping persons with filtration option
   const listPersons = persons
+
     .filter(({ personData: { type } }) =>
       showTypeString ? type === showType : true
     )
+    .reverse() /* new members are shown at the top of the list */
     .map((person) => (
       <PersonCard
         person={person}

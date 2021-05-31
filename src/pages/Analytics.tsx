@@ -13,7 +13,7 @@ import { useSetHooks } from "../hooks/hooks";
 import { fetchSpecialists } from "../redux/specialistsSlice";
 
 import "./AllSpecialists.css";
-import AnalyticsContnet from "../components/AnalyticsContent";
+import AnalyticsContnet from "../components/AnalyticsContent/AnalyticsContent";
 
 const Analytics: FC = () => {
   const dispatch = useDispatch();

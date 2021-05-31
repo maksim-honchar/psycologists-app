@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { IonBadge, IonItem, IonLabel, IonNote } from "@ionic/react";
+import "./AnalyticsContnet.css";
 
 interface AnalyticsProps {
   totalAmount: number;
@@ -38,25 +39,33 @@ const AnalyticsContnet: FC<AnalyticsProps> = (props) => {
         <IonLabel>
           <h1>Общее количество специалистов</h1>
         </IonLabel>
-        <IonBadge slot="start">{totalAmount}</IonBadge>
+        <IonBadge slot="start" className="badge-analytics">
+          {totalAmount}
+        </IonBadge>
       </IonItem>
       <IonItem>
         <IonLabel>
           <h1>Психологи</h1>
         </IonLabel>
-        <IonBadge slot="start">{amountPsychologist}</IonBadge>
+        <IonBadge slot="start" className="badge-analytics">
+          {amountPsychologist}
+        </IonBadge>
       </IonItem>
       <IonItem>
         <IonLabel>
           <h1>Психотерапевты</h1>
         </IonLabel>
-        <IonBadge slot="start">{amountPsychotherapist}</IonBadge>
+        <IonBadge slot="start" className="badge-analytics">
+          {amountPsychotherapist}
+        </IonBadge>
       </IonItem>
       <IonItem>
         <IonLabel>
           <h1>Психиаторы</h1>
         </IonLabel>
-        <IonBadge slot="start">{amountPsychiatrist}</IonBadge>
+        <IonBadge slot="start" className="badge-analytics">
+          {amountPsychiatrist}
+        </IonBadge>
       </IonItem>
       <IonItem>
         <IonLabel>
@@ -66,7 +75,9 @@ const AnalyticsContnet: FC<AnalyticsProps> = (props) => {
             {favourPsychotherapist}, психиаторы: {favourPsychiatrist}
           </IonNote>
         </IonLabel>
-        <IonBadge slot="start">{amountFavourites}</IonBadge>
+        <IonBadge slot="start" className="badge-analytics">
+          {amountFavourites}
+        </IonBadge>
       </IonItem>
       <IonItem>
         <IonLabel>
@@ -76,7 +87,9 @@ const AnalyticsContnet: FC<AnalyticsProps> = (props) => {
             {disFavourPsychotherapist} , психиаторы: {disFavourPsychiatrist}
           </IonNote>
         </IonLabel>
-        <IonBadge slot="start">{disFavourites}</IonBadge>
+        <IonBadge slot="start" className="badge-analytics">
+          {disFavourites}
+        </IonBadge>
       </IonItem>
     </>
   );
