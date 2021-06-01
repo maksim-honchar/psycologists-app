@@ -14,31 +14,36 @@ import {
   IonSelect,
   IonSelectOption,
   IonButton,
-} from "@ionic/react";
-import { unwrapResult } from "@reduxjs/toolkit";
-import { FC, useState, SyntheticEvent } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
-import { addNewSpecialist } from "../../redux/specialistsSlice";
-import { AppDispatch } from "../../redux/store";
-import "./AddSpecialist.css";
+} from '@ionic/react';
+import { unwrapResult } from '@reduxjs/toolkit';
+import React, { FC, useState, SyntheticEvent } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { addNewSpecialist } from '../../redux/specialistsSlice';
+import { AppDispatch } from '../../redux/store';
+import './AddSpecialist.css';
 
 const AddSpecialist: FC = () => {
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
-  const [mail, setMail] = useState<string>("");
-  const [specialization, setSpecialization] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>('');
+  const [lastName, setLastName] = useState<string>('');
+  const [mail, setMail] = useState<string>('');
+  const [specialization, setSpecialization] = useState<string>('');
   const name = `${lastName} ${firstName}`;
 
   const dispatch: AppDispatch = useDispatch();
   const history = useHistory();
+
+  const canSave = Boolean(firstName)
+    && Boolean(lastName)
+    && Boolean(mail)
+    && Boolean(specialization);
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     const formSubmit = {
       email: mail,
       type: specialization,
-      photo: "null",
+      photo: 'null',
       isFavourite: false,
       isDisfavourite: false,
     };
@@ -46,27 +51,21 @@ const AddSpecialist: FC = () => {
     if (canSave) {
       try {
         const resultAction = await dispatch(
-          addNewSpecialist({ idName: name, formSubmit })
+          addNewSpecialist({ idName: name, formSubmit }),
         );
 
         /* In case of an error, it will work catch  */
         unwrapResult(resultAction);
-        history.push("/all-specialists");
-        setFirstName("");
-        setLastName("");
-        setMail("");
-        setSpecialization("");
+        history.push('/all-specialists');
+        setFirstName('');
+        setLastName('');
+        setMail('');
+        setSpecialization('');
       } catch (error) {
         console.error(error);
       }
     }
   };
-
-  const canSave =
-    Boolean(firstName) &&
-    Boolean(lastName) &&
-    Boolean(mail) &&
-    Boolean(specialization);
 
   return (
     <IonPage>

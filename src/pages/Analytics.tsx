@@ -6,13 +6,13 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-} from "@ionic/react";
-import { FC, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useSetHooks } from "../hooks/hooks";
-import { fetchSpecialists } from "../redux/specialistsSlice";
-import AnalyticsContnet from "../components/AnalyticsContent/AnalyticsContent";
-import Spiner from "../components/Spiner";
+} from '@ionic/react';
+import React, { FC, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSetHooks } from '../hooks/hooks';
+import { fetchSpecialists } from '../redux/specialistsSlice';
+import AnalyticsContnet from '../components/AnalyticsContent/AnalyticsContent';
+import Spiner from '../components/Spiner';
 
 const Analytics: FC = () => {
   const dispatch = useDispatch();
@@ -24,62 +24,62 @@ const Analytics: FC = () => {
 
   // Amount persons with type - psychologist
   const amountPsychologist = persons.filter(
-    ({ personData: { type } }) => type === "Психолог"
+    ({ personData: { type } }) => type === 'Психолог',
   ).length;
 
   // Amount persons with type - psychotherapist
   const amountPsychotherapist = persons.filter(
-    ({ personData: { type } }) => type === "Психотерапевт"
+    ({ personData: { type } }) => type === 'Психотерапевт',
   ).length;
 
   // Amount persons with type - psychiatrist
   const amountPsychiatrist = persons.filter(
-    ({ personData: { type } }) => type === "Психиатр"
+    ({ personData: { type } }) => type === 'Психиатр',
   ).length;
 
   // Amount favourites persons
   const amountFavourites = persons.filter(
-    ({ personData: { isFavourite } }) => isFavourite
+    ({ personData: { isFavourite } }) => isFavourite,
   ).length;
 
   // Amount favourites persons with type - psychologist
   const favourPsychologist = persons
-    .filter(({ personData: { type } }) => type === "Психолог")
+    .filter(({ personData: { type } }) => type === 'Психолог')
     .filter(({ personData: { isFavourite } }) => isFavourite).length;
 
   // Amount favourites persons with type - psychotherapist
   const favourPsychotherapist = persons
-    .filter(({ personData: { type } }) => type === "Психотерапевт")
+    .filter(({ personData: { type } }) => type === 'Психотерапевт')
     .filter(({ personData: { isFavourite } }) => isFavourite).length;
 
   // Amount favourites persons with type -  psychiatrist
   const favourPsychiatrist = persons
-    .filter(({ personData: { type } }) => type === "Психиатр")
+    .filter(({ personData: { type } }) => type === 'Психиатр')
     .filter(({ personData: { isFavourite } }) => isFavourite).length;
 
   // Amount disfavourites persons
   const disFavourites = persons.filter(
-    ({ personData: { isDisfavourite } }) => isDisfavourite
+    ({ personData: { isDisfavourite } }) => isDisfavourite,
   ).length;
 
   // Amount disfavourites persons with type - psychologist
   const disFavourPsychologist = persons
-    .filter(({ personData: { type } }) => type === "Психолог")
+    .filter(({ personData: { type } }) => type === 'Психолог')
     .filter(({ personData: { isDisfavourite } }) => isDisfavourite).length;
 
   // Amount disfavourites persons with type - psychotherapist
   const disFavourPsychotherapist = persons
-    .filter(({ personData: { type } }) => type === "Психотерапевт")
+    .filter(({ personData: { type } }) => type === 'Психотерапевт')
     .filter(({ personData: { isDisfavourite } }) => isDisfavourite).length;
 
   // Amount disfavourites persons with type -  psychiatrist
   const disFavourPsychiatrist = persons
-    .filter(({ personData: { type } }) => type === "Психиатр")
+    .filter(({ personData: { type } }) => type === 'Психиатр')
     .filter(({ personData: { isDisfavourite } }) => isDisfavourite).length;
 
   // dispatching thunk function for fetching persons from firestore
   useEffect(() => {
-    if (personsStatus === "idle") {
+    if (personsStatus === 'idle') {
       dispatch(fetchSpecialists());
     }
   }, [dispatch, personsStatus]);

@@ -1,1 +1,1 @@
-export const psycologists = "psycologists";
+export const psycologists = 'psycologists';

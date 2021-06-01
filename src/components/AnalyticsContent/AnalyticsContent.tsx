@@ -1,6 +1,8 @@
-import { FC } from "react";
-import { IonBadge, IonItem, IonLabel, IonNote } from "@ionic/react";
-import "./AnalyticsContnet.css";
+import React, { FC } from 'react';
+import {
+  IonBadge, IonItem, IonLabel, IonNote,
+} from '@ionic/react';
+import './AnalyticsContnet.css';
 
 interface AnalyticsProps {
   totalAmount: number;
@@ -71,8 +73,15 @@ const AnalyticsContnet: FC<AnalyticsProps> = (props) => {
         <IonLabel>
           <h1>Избранные</h1>
           <IonNote>
-            психологи: {favourPsychologist}, психотерапевты:{" "}
-            {favourPsychotherapist}, психиаторы: {favourPsychiatrist}
+            психологи:
+            {' '}
+            {favourPsychologist}
+            , психотерапевты:
+            {' '}
+            {favourPsychotherapist}
+            , психиаторы:
+            {' '}
+            {favourPsychiatrist}
           </IonNote>
         </IonLabel>
         <IonBadge slot="start" className="badge-analytics">
@@ -83,8 +92,16 @@ const AnalyticsContnet: FC<AnalyticsProps> = (props) => {
         <IonLabel>
           <h1>Черный список</h1>
           <IonNote>
-            психологи: {disFavourPsychologist}, психотерапевты:{" "}
-            {disFavourPsychotherapist} , психиаторы: {disFavourPsychiatrist}
+            психологи:
+            {' '}
+            {disFavourPsychologist}
+            , психотерапевты:
+            {' '}
+            {disFavourPsychotherapist}
+            {' '}
+            , психиаторы:
+            {' '}
+            {disFavourPsychiatrist}
           </IonNote>
         </IonLabel>
         <IonBadge slot="start" className="badge-analytics">

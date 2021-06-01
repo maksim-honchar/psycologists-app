@@ -1,14 +1,12 @@
-import { FC } from "react";
-import { IonLoading } from "@ionic/react";
+import React, { FC } from 'react';
+import { IonLoading } from '@ionic/react';
 
-const Spiner: FC = () => {
-  return (
-    <IonLoading
-      cssClass="my-custom-class"
-      isOpen
-      message={"Пожалуйста подождите..."}
-    />
-  );
-};
+const Spiner: FC = () => (
+  <IonLoading
+    cssClass="my-custom-class"
+    isOpen
+    message="Пожалуйста подождите..."
+  />
+);
 
 export default Spiner;

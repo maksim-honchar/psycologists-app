@@ -1,9 +1,11 @@
-import { IonAvatar, IonItem, IonLabel, IonNote, IonIcon } from "@ionic/react";
-import { heartCircleOutline, heartDislikeCircleOutline } from "ionicons/icons";
-import { FC } from "react";
-import { PersonItem } from "../../utils/types";
-import avatar from "../pictures/avatar.svg";
-import "./PersonCard.css";
+import React, { FC } from 'react';
+import {
+  IonAvatar, IonItem, IonLabel, IonNote, IonIcon,
+} from '@ionic/react';
+import { heartCircleOutline, heartDislikeCircleOutline } from 'ionicons/icons';
+import { PersonItem } from '../../utils/types';
+import avatar from '../pictures/avatar.svg';
+import './PersonCard.css';
 
 interface PersonCardProps {
   person: PersonItem;
@@ -13,8 +15,8 @@ interface PersonCardProps {
 
 const PersonCard: FC<PersonCardProps> = (props) => {
   const { person, toFavourite, toDisfavourite } = props;
-  const isFavourite = person.personData.isFavourite;
-  const isDisfavourite = person.personData.isDisfavourite;
+  const { isFavourite } = person.personData;
+  const { isDisfavourite } = person.personData;
 
   return (
     <>
@@ -35,14 +37,14 @@ const PersonCard: FC<PersonCardProps> = (props) => {
           <div className="icon-wrapper">
             <div>
               <IonIcon
-                class={isFavourite ? "icon-active" : "icon"}
+                class={isFavourite ? 'icon-active' : 'icon'}
                 icon={heartCircleOutline}
                 onClick={() => toFavourite(person.personId)}
               />
             </div>
             <div>
               <IonIcon
-                class={isDisfavourite ? "icon-active" : "icon"}
+                class={isDisfavourite ? 'icon-active' : 'icon'}
                 icon={heartDislikeCircleOutline}
                 onClick={() => toDisfavourite(person.personId)}
               />
