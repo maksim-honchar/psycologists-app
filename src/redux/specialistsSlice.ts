@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { psycologists } from '../utils/constants';
+import {
+  failed, pending, psycologists, succeeded,
+} from '../utils/constants';
 import db from '../utils/db';
 import { InitialState, PersonData, PersonItem } from '../utils/types';
 
@@ -65,23 +67,23 @@ const specialistsSlice = createSlice({
   extraReducers: (builder) => {
     // Reducer for fetchSpecialists сases
     builder.addCase(fetchSpecialists.pending, (state) => {
-      state.status = 'pending';
+      state.status = pending;
     });
     builder.addCase(fetchSpecialists.fulfilled, (state, action) => {
-      state.status = 'succeeded';
+      state.status = succeeded;
       state.psycologistsList = state.psycologistsList.concat(action.payload);
     });
     builder.addCase(fetchSpecialists.rejected, (state, action) => {
-      state.status = 'failed';
+      state.status = failed;
       state.error = action.error.message;
     });
 
     // Reducer for addToFavourite сases
     builder.addCase(addToFavourite.pending, (state) => {
-      state.status = 'pending';
+      state.status = pending;
     });
     builder.addCase(addToFavourite.fulfilled, (state, action) => {
-      state.status = 'succeeded';
+      state.status = succeeded;
       const { id, result } = action.payload;
       const existPerson = state.psycologistsList.find((person) => person.personId === id);
       if (existPerson) {
@@ -89,13 +91,13 @@ const specialistsSlice = createSlice({
       }
     });
     builder.addCase(addToFavourite.rejected, (state, action) => {
-      state.status = 'failed';
+      state.status = failed;
       state.error = action.error.message;
     });
 
     // Reducer for addToDisfavourite сases
     builder.addCase(addToDisfavourite.pending, (state) => {
-      state.status = 'pending';
+      state.status = pending;
     });
     builder.addCase(addToDisfavourite.fulfilled, (state, action) => {
       const { id, result } = action.payload;
@@ -103,22 +105,23 @@ const specialistsSlice = createSlice({
       if (existPerson) {
         existPerson.personData = result;
       }
+      state.status = succeeded;
     });
     builder.addCase(addToDisfavourite.rejected, (state, action) => {
-      state.status = 'failed';
+      state.status = failed;
       state.error = action.error.message;
     });
 
     // Reducer for addNewSpecialist сases
     builder.addCase(addNewSpecialist.pending, (state) => {
-      state.status = 'pending';
+      state.status = pending;
     });
     builder.addCase(addNewSpecialist.fulfilled, (state, action) => {
-      state.status = 'succeeded';
+      state.status = succeeded;
       state.psycologistsList.push(action.payload);
     });
     builder.addCase(addNewSpecialist.rejected, (state, action) => {
-      state.status = 'failed';
+      state.status = failed;
       state.error = action.error.message;
     });
   },

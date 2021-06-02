@@ -42,7 +42,7 @@ const AddSpecialist: FC = () => {
     const formSubmit = {
       email: mail,
       type: specialization,
-      photo: 'null',
+      photo: null,
       isFavourite: false,
       isDisfavourite: false,
     };

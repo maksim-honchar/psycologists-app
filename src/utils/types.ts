@@ -1,5 +1,5 @@
 export interface PersonData {
-    photo: string,
+    photo: string | null,
     type: string,
     email: string,
     isFavourite: boolean,
