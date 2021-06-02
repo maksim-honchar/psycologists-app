@@ -11,14 +11,13 @@ import {
   IonItem,
   IonInput,
   IonLabel,
-  IonSelect,
-  IonSelectOption,
   IonButton,
 } from '@ionic/react';
 import { unwrapResult } from '@reduxjs/toolkit';
 import React, { FC, useState, SyntheticEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+import SelectSpecialization from '../../components/SelectSpecialization';
 import { addNewSpecialist } from '../../redux/specialistsSlice';
 import { AppDispatch } from '../../redux/store';
 import './AddSpecialist.css';
@@ -106,20 +105,11 @@ const AddSpecialist: FC = () => {
                 onIonChange={(e) => setMail(e.detail.value!)}
               />
             </IonItem>
-            <IonItem>
-              <IonLabel>Специализация*</IonLabel>
-              <IonSelect
-                value={specialization}
-                placeholder="Выбрать"
-                onIonChange={(e) => setSpecialization(e.detail.value)}
-              >
-                <IonSelectOption value="Психолог">Психолог</IonSelectOption>
-                <IonSelectOption value="Психотерапевт">
-                  Психотерапевт
-                </IonSelectOption>
-                <IonSelectOption value="Психиатр">Психиатр</IonSelectOption>
-              </IonSelect>
-            </IonItem>
+            <SelectSpecialization
+              specialization={specialization}
+              setSpecialization={setSpecialization}
+              isAddSpecialist
+            />
             <IonButton
               className="btn-submit"
               type="submit"

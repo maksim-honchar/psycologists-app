@@ -17,7 +17,7 @@ import {
   addToFavourite,
   fetchSpecialists,
 } from '../redux/specialistsSlice';
-import TypeList from '../components/TypeList';
+import SelectSpecialization from '../components/SelectSpecialization';
 import Spiner from '../components/Spiner';
 import PersonCard from '../components/PersonCard/PersonCard';
 import './pages.css';
@@ -25,12 +25,9 @@ import './pages.css';
 const AllSpecialists: FC = () => {
   const dispatch = useDispatch();
   const { personsStatus, persons } = useSetHooks();
-  const [showType, setShowType] = useState<boolean | string>(true);
-  const showTypeString = typeof showType === 'string';
+  const [specialization, setSpecialization] = useState<string>('Все');
+  const isAll = specialization === 'Все';
   const personsLength = persons.length > 0;
-
-  // Set display mode by specialist type
-  const setType = (type: string | boolean) => setShowType(type);
 
   // Dispatching thunks  favourite/unfavourite
   const toFavourite = (id: string) => dispatch(addToFavourite(id));
@@ -38,9 +35,7 @@ const AllSpecialists: FC = () => {
 
   // maping persons with filtration option
   const listPersons = persons
-
-    .filter(({ personData: { type } }) => (showTypeString ? type === showType : true))
-    .reverse() /* new members are shown at the top of the list */
+    .filter(({ personData: { type } }) => (isAll ? true : type === specialization))
     .map((person) => (
       <PersonCard
         person={person}
@@ -59,11 +54,10 @@ const AllSpecialists: FC = () => {
 
   const content = (
     <>
-      <div className="filtered-btn">
-        <TypeList
-          setType={setType}
-          showTypeString={showTypeString}
-          showType={showType}
+      <div className="select-wrapper">
+        <SelectSpecialization
+          specialization={specialization}
+          setSpecialization={setSpecialization}
         />
       </div>
       <IonList>{listPersons}</IonList>
