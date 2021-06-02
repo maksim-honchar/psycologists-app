@@ -32,10 +32,7 @@ const AddSpecialist: FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const history = useHistory();
 
-  const canSave = Boolean(firstName)
-    && Boolean(lastName)
-    && Boolean(mail)
-    && Boolean(specialization);
+  const canSave = firstName && lastName && mail && specialization;
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
