@@ -2,7 +2,7 @@
 
 ## Deploy
 
-[psycologists-app.vercel.app](https://psycologists-app.vercel.app/)
+[psychologists-4329e.web.app/](https://psychologists-4329e.web.app/)
 
 ## Install dependencies
 
